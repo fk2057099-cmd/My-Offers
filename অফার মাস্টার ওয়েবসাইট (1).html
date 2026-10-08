@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>এক্সক্লুসিভ অফার হাব - Exclusive Offer Hub</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Hind Siliguri -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Hind Siliguri', 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Pulse Animation */
+        .pulse-glow {
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
+            animation: pulseGlow 2s infinite alternate;
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 10px rgba(236, 72, 153, 0.4); }
+            100% { box-shadow: 0 0 25px rgba(236, 72, 153, 0.8); }
+        }
+        /* Hide google translate top bar frame */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+        body {
+            top: 0px !important;
+        }
+        .goog-te-gadget-simple {
+            background-color: rgba(30, 41, 59, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            padding: 6px 12px !important;
+            border-radius: 8px !important;
+            color: #fff !important;
+            font-size: 14px !important;
+        }
+        .goog-te-gadget-simple span {
+            color: #fff !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white text-xs md:text-sm py-2 px-4 text-center font-bold flex justify-between items-center z-40">
+        <div class="flex items-center space-x-2 mx-auto">
+            <span class="inline-block w-2.5 h-2.5 bg-green-400 rounded-full animate-ping"></span>
+            <span>🔥 বিশেষ অফার চলছে! সীমিত সময়ের জন্য জয়েন করুন।</span>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-30 glass shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="handleCustomClick('https://google.com')">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-pink-500 to-violet-600 flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                    ⚡
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-violet-400">
+                        মেগা অফার জোন
+                    </h1>
+                    <p class="text-[10px] text-slate-400 -mt-1">Verified Deals & Bonuses</p>
+                </div>
+            </div>
+
+            <!-- Header Controls: Translator & Admin Toggle -->
+            <div class="flex items-center space-x-3">
+                <!-- Google Translate Widget -->
+                <div id="google_translate_element" class="text-sm"></div>
+
+                <!-- Admin Control Panel Button -->
+                <button onclick="toggleAdminDrawer()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 p-2 rounded-lg border border-slate-700 transition flex items-center space-x-1 text-xs font-semibold">
+                    <i class="fa-solid fa-gear text-pink-400"></i>
+                    <span class="hidden md:inline">অ্যাডমিন সেটিং</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        
+        <!-- Live Visitor Stat Ribbon -->
+        <div class="glass rounded-2xl p-4 sm:p-6 flex flex-wrap items-center justify-between gap-4 border border-pink-500/20 shadow-xl">
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <div class="w-12 h-12 bg-pink-500/10 rounded-full flex items-center justify-center text-pink-400 text-xl border border-pink-500/30">
+                        <i class="fa-solid fa-users animate-pulse"></i>
+                    </div>
+                    <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-slate-900 rounded-full"></span>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span id="liveCounter" class="text-2xl font-black text-white tracking-wider">1,428</span>
+                        <span class="text-xs bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full font-medium">লাইভ ভিজিটর</span>
+                    </div>
+                    <p class="text-xs text-slate-400">বর্তমানে সাইটে এক্টিভ আছেন</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-6 text-xs text-slate-300">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-shield-halved text-green-400"></i>
+                    <span>১০০% সেফ ও ভেরিফাইড</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-bolt text-yellow-400"></i>
+                    <span>ইনস্ট্যান্ট এক্সেস</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Promo Banner -->
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-purple-900/60 via-slate-900/80 to-pink-900/60 p-6 md:p-10 border border-slate-700/60 text-center space-y-4">
+            <span class="bg-gradient-to-r from-pink-500 to-purple-500 text-white text-xs uppercase tracking-widest font-bold px-3 py-1 rounded-full shadow-lg">
+                আজকের সেরা কালেকশন
+            </span>
+            <h2 class="text-2xl md:text-4xl font-extrabold text-white leading-tight">
+                পছন্দের অফারে জয়েন করুন এবং জিতে নিন আকর্ষণীয় বোনাস!
+            </h2>
+            <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto">
+                নিচে দেওয়া প্রতিটি অফারের মেয়াদ খুব সীমিত। দ্রুত অফার ক্লেইম করতে আপনার পছন্দের কার্ডের "অফার নিন" বাটনে ক্লিক করুন।
+            </p>
+
+            <!-- Big Main CTA Button -->
+            <div class="pt-2">
+                <button onclick="handleCustomClick()" class="pulse-glow bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 text-white font-bold text-lg px-8 py-4 rounded-full hover:scale-105 transition transform shadow-2xl flex items-center space-x-3 mx-auto">
+                    <i class="fa-solid fa-gift text-xl"></i>
+                    <span id="mainCtaText">সবগুলো অফার একসাথে আনলক করুন</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Offers Grid Section Header -->
+        <div class="flex items-center justify-between pt-4">
+            <h3 class="text-xl font-bold text-white flex items-center space-x-2">
+                <i class="fa-solid fa-fire text-pink-500"></i>
+                <span>চলমান ধামাকা অফারসমূহ</span>
+            </h3>
+            <button onclick="openAddPostModal()" class="bg-pink-600/20 hover:bg-pink-600/30 text-pink-400 border border-pink-500/30 text-xs font-bold px-3 py-2 rounded-lg transition flex items-center space-x-1">
+                <i class="fa-solid fa-plus"></i>
+                <span>নতুন অফার পোস্ট করুন</span>
+            </button>
+        </div>
+
+        <!-- Offer Cards Grid Container -->
+        <div id="offersContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamic Offer Cards will be rendered here via JS -->
+        </div>
+
+    </main>
+
+    <!-- Admin Settings Drawer Slide-over -->
+    <div id="adminDrawer" class="fixed inset-y-0 right-0 max-w-xs w-full glass bg-slate-900/95 border-l border-slate-700 p-6 z-50 transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl overflow-y-auto">
+        <div class="flex justify-between items-center pb-4 border-b border-slate-800">
+            <h3 class="font-bold text-lg text-white flex items-center space-x-2">
+                <i class="fa-solid fa-sliders text-pink-500"></i>
+                <span>অ্যাডমিন কন্ট্রোল প্যানেল</span>
+            </h3>
+            <button onclick="toggleAdminDrawer()" class="text-slate-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="py-6 space-y-6 text-sm">
+            <!-- Global Redirect Link Switcher -->
+            <div class="space-y-2 p-4 bg-slate-800/60 rounded-xl border border-slate-700">
+                <label class="flex items-center justify-between cursor-pointer">
+                    <span class="font-semibold text-white">গ্লোবাল ক্লিক লিংক</span>
+                    <input type="checkbox" id="globalLinkToggle" onchange="toggleGlobalLinkSetting()" class="sr-only peer">
+                    <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pink-600 relative"></div>
+                </label>
+                <p class="text-xs text-slate-400">অন থাকলে ওয়েবসাইটের যেকোনো খালি জায়গায় ক্লিক করলেই অফার লিংকে রিডাইরেক্ট হবে।</p>
+                
+                <div class="pt-2">
+                    <label class="block text-xs font-medium text-slate-300 mb-1">ডিফল্ট রিডাইরেক্ট URL:</label>
+                    <input type="url" id="globalUrlInput" value="https://example.com/mega-offer" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white focus:outline-none focus:border-pink-500">
+                </div>
+            </div>
+
+            <!-- Add Post Fast Button -->
+            <button onclick="openAddPostModal(); toggleAdminDrawer();" class="w-full bg-gradient-to-r from-pink-600 to-purple-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition">
+                <i class="fa-solid fa-plus-circle mr-1"></i> নতুন অফার পোস্ট যোগ করুন
+            </button>
+
+            <!-- Reset All Data -->
+            <button onclick="resetDefaultOffers()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-2 rounded-xl text-center border border-slate-700 text-xs">
+                <i class="fa-solid fa-rotate mr-1"></i> পোস্টসমূহ রিসেট করুন
+            </button>
+        </div>
+    </div>
+
+    <!-- Create New Offer Post Modal -->
+    <div id="addPostModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass bg-slate-900 max-w-lg w-full rounded-2xl p-6 border border-slate-700 shadow-2xl relative space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                    <i class="fa-solid fa-plus text-pink-500"></i>
+                    <span>নতুন অফার পোস্ট তৈরি করুন</span>
+                </h3>
+                <button onclick="closeAddPostModal()" class="text-slate-400 hover:text-white text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="offerForm" onsubmit="saveNewOffer(event)" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-medium text-slate-300 mb-1">অফারের শিরোনাম (Title)*</label>
+                    <input type="text" id="postTitle" required placeholder="যেমন: ১০০০ টাকা ফ্রি বোনাস অফার" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-pink-500">
+                </div>
+
+                <div>
+                    <label class="block font-medium text-slate-300 mb-1">ছোট বিবরণ (Description)*</label>
+                    <textarea id="postDesc" required rows="2" placeholder="অফারটির সংক্ষিপ্ত বর্ণনা দিন..." class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-pink-500"></textarea>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-medium text-slate-300 mb-1">ছবির URL (Image Link)</label>
+                        <input type="url" id="postImg" placeholder="https://..." class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-pink-500">
+                    </div>
+                    <div>
+                        <label class="block font-medium text-slate-300 mb-1">স্টক / স্পট সংখ্যা</label>
+                        <input type="number" id="postStock" value="15" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-pink-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-medium text-slate-300 mb-1">অফার জয়েন করার বিশেষ লিংক (Offer Action URL)*</label>
+                    <input type="url" id="postUrl" required placeholder="https://your-affiliate-link.com" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-pink-500">
+                </div>
+
+                <div>
+                    <label class="block font-medium text-slate-300 mb-1">বাটনের লেখা (Button Text)</label>
+                    <input type="text" id="postBtnText" value="অফারটি দাবি করুন" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-pink-500">
+                </div>
+
+                <div class="pt-2 flex justify-end space-x-2">
+                    <button type="button" onclick="closeAddPostModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg font-semibold">বাতিল</button>
+                    <button type="submit" class="px-5 py-2 bg-pink-600 hover:bg-pink-700 text-white rounded-lg font-bold shadow-lg">পোস্ট প্রকাশ করুন</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Live Toast Activity Notification -->
+    <div id="liveToast" class="fixed bottom-5 left-5 z-40 glass bg-slate-900/90 border border-pink-500/40 p-3 rounded-2xl shadow-2xl flex items-center space-x-3 transform transition-all duration-500 translate-y-24 opacity-0 max-w-xs">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm shrink-0">
+            <i class="fa-solid fa-user-check"></i>
+        </div>
+        <div class="text-xs">
+            <p id="toastUser" class="font-bold text-white">যুক্তরাষ্ট্র থেকে একজন ইউজার</p>
+            <p id="toastAction" class="text-slate-300">মাত্র ৩ সেকেন্ড আগে অফারে জয়েন করলেন!</p>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="glass border-t border-slate-800 mt-12 py-8 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-3">
+            <p>© 2026 Exclusive Offer Hub. All Rights Reserved.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="hover:text-slate-300">প্রাইভেসি পলিসি</a>
+                <span>•</span>
+                <a href="#" class="hover:text-slate-300">শর্তাবলী</a>
+                <span>•</span>
+                <a href="#" class="hover:text-slate-300">যোগাযোগ</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Global state variable for Offers
+        const DEFAULT_OFFERS = [
+            {
+                id: '1',
+                title: '⚡ ১,০০০ টাকা ফ্রি সাইনআপ বোনাস অফার',
+                desc: 'আজকের বিশেষ স্পেশাল অফার! এখনই একাউন্ট খুলে ১০০০ টাকা ইনস্ট্যান্ট আপনার ওয়ালেটে বুঝে নিন।',
+                img: 'https://placehold.co/600x350/be185d/ffffff?text=Bonus+1000+BDT',
+                stock: 7,
+                url: 'https://example.com/bonus1000',
+                btnText: 'এখনই বোনাস নিন'
+            },
+            {
+                id: '2',
+                title: '🎁 স্পিন অ্যান্ড উইন - ১০০% ক্যাশব্যাক',
+                desc: 'স্পিন ঘুরিয়ে জিতে নিন ফ্রি রিচার্জ, ক্যাশব্যাক ও আকর্ষণীয় গিফট কুপন!',
+                img: 'https://placehold.co/600x350/4c1d95/ffffff?text=Spin+and+Win',
+                stock: 12,
+                url: 'https://example.com/spin-win',
+                btnText: 'স্পিন করুন'
+            },
+            {
+                id: '3',
+                title: '🚀 আনলিমিটেড ইন্টারনেট ডাটা প্যাক প্রমো',
+                desc: 'মাত্র ৩০ টাকায় ৩০ জিবি ইন্টারনেট প্যাক একটিভ করুন আজকেই। সীমিত মেয়াদের আফার।',
+                img: 'https://placehold.co/600x350/0369a1/ffffff?text=Data+Pack+Offer',
+                stock: 4,
+                url: 'https://example.com/data-pack',
+                btnText: 'ডাটা প্যাক এক্টিভ করুন'
+            }
+        ];
+
+        let offers = JSON.parse(localStorage.getItem('my_offers')) || DEFAULT_OFFERS;
+        let isGlobalLinkActive = false;
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            renderOffers();
+            initLiveCounter();
+            initLiveToast();
+            setupGlobalClickRedirect();
+        });
+
+        function renderOffers() {
+            const container = document.getElementById('offersContainer');
+            container.innerHTML = '';
+
+            offers.forEach(offer => {
+                const card = document.createElement('div');
+                card.className = 'glass rounded-2xl overflow-hidden border border-slate-700/80 hover:border-pink-500/50 transition duration-300 flex flex-col group';
+                
+                card.innerHTML = `
+                    <div class="relative overflow-hidden h-48 bg-slate-800">
+                        <img src="${offer.img}" alt="${offer.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x350/1e293b/ffffff?text=Offer+Image'">
+                        <div class="absolute top-3 right-3 bg-red-600/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full animate-bounce shadow">
+                            বাকি আছে: ${offer.stock} টি
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <h4 class="text-lg font-bold text-white group-hover:text-pink-400 transition">${offer.title}</h4>
+                            <p class="text-xs text-slate-300 leading-relaxed">${offer.desc}</p>
+                        </div>
+
+                        <!-- Action Button -->
+                        <div class="pt-2">
+                            <button onclick="handleCustomClick('${offer.url}')" class="w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold py-3 px-4 rounded-xl shadow-lg transition flex items-center justify-center space-x-2">
+                                <span>${offer.btnText || 'অফার নিন'}</span>
+                                <i class="fa-solid fa-arrow-right text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function handleCustomClick(targetUrl = null) {
+            const globalUrl = document.getElementById('globalUrlInput').value;
+            // If Global Link active, redirect to Global URL; else go to card-specific URL
+            if (isGlobalLinkActive && globalUrl) {
+                window.open(globalUrl, '_blank');
+            } else if (targetUrl) {
+                window.open(targetUrl, '_blank');
+            } else {
+                window.open(globalUrl || 'https://google.com', '_blank');
+            }
+        }
+
+        function setupGlobalClickRedirect() {
+            // Enable entire document redirect if global click mode enabled
+            document.body.addEventListener('click', (e) => {
+                if (!isGlobalLinkActive) return;
+                
+                // Exclude clicking on admin settings drawer & modals
+                const adminDrawer = document.getElementById('adminDrawer');
+                const addPostModal = document.getElementById('addPostModal');
+                
+                if (adminDrawer.contains(e.target) || addPostModal.contains(e.target) || e.target.closest('button[onclick*="toggleAdminDrawer"]')) {
+                    return; // Don't redirect on admin panel interaction
+                }
+
+                const globalUrl = document.getElementById('globalUrlInput').value;
+                if (globalUrl) {
+                    window.open(globalUrl, '_blank');
+                }
+            });
+        }
+
+        function toggleGlobalLinkSetting() {
+            const checkbox = document.getElementById('globalLinkToggle');
+            isGlobalLinkActive = checkbox.checked;
+            alert(isGlobalLinkActive ? "গ্লোবাল ক্লিক লিংক চালু করা হয়েছে! এখন পেজের যেকোনো জায়গায় ক্লিক করলে অফার ওপেন হবে।" : "গ্লোবাল ক্লিক লিংক বন্ধ করা হয়েছে।");
+        }
+
+        function openAddPostModal() {
+            document.getElementById('addPostModal').classList.remove('hidden');
+        }
+
+        function closeAddPostModal() {
+            document.getElementById('addPostModal').classList.add('hidden');
+        }
+
+        function saveNewOffer(e) {
+            e.preventDefault();
+            const newOffer = {
+                id: Date.now().toString(),
+                title: document.getElementById('postTitle').value,
+                desc: document.getElementById('postDesc').value,
+                img: document.getElementById('postImg').value || 'https://placehold.co/600x350/be185d/ffffff?text=Exclusive+Offer',
+                stock: document.getElementById('postStock').value || 10,
+                url: document.getElementById('postUrl').value,
+                btnText: document.getElementById('postBtnText').value || 'অফারটি দাবি করুন'
+            };
+
+            offers.unshift(newOffer);
+            localStorage.setItem('my_offers', JSON.stringify(offers));
+            renderOffers();
+            closeAddPostModal();
+            document.getElementById('offerForm').reset();
+        }
+
+        function resetDefaultOffers() {
+            if (confirm("আপনি কি অফারগুলো রিসেট করতে চান?")) {
+                offers = DEFAULT_OFFERS;
+                localStorage.setItem('my_offers', JSON.stringify(offers));
+                renderOffers();
+            }
+        }
+
+        function toggleAdminDrawer() {
+            const drawer = document.getElementById('adminDrawer');
+            drawer.classList.toggle('translate-x-full');
+        }
+
+        function initLiveCounter() {
+            const counterEl = document.getElementById('liveCounter');
+            let count = 1428;
+
+            setInterval(() => {
+                // Randomly add or subtract 1 to 5 visitors
+                const change = Math.floor(Math.random() * 9) - 4;
+                count = Math.max(1000, count + change);
+                counterEl.innerText = count.toLocaleString();
+            }, 3000);
+        }
+
+        function initLiveToast() {
+            const locations = ['বাংলাদেশ', 'USA', 'UK', 'ভারত', 'কানাডা', 'জার্মানি', 'সৌদি আরব'];
+            const actions = ['অফারে জয়েন করলেন!', 'বোনাস রিডিম করলেন!', '১৫০০ টাকা বোনাস দাবি করলেন!'];
+            const toast = document.getElementById('liveToast');
+
+            setInterval(() => {
+                const randomLoc = locations[Math.floor(Math.random() * locations.length)];
+                const randomAct = actions[Math.floor(Math.random() * actions.length)];
+                
+                document.getElementById('toastUser').innerText = `${randomLoc} থেকে একজন ইউজার`;
+                document.getElementById('toastAction').innerText = `মাত্র কয়েকটি সেকেন্ড আগে ${randomAct}`;
+
+                // Show toast
+                toast.classList.remove('translate-y-24', 'opacity-0');
+                
+                // Hide after 4 seconds
+                setTimeout(() => {
+                    toast.classList.add('translate-y-24', 'opacity-0');
+                }, 4000);
+
+            }, 9000);
+        }
+    </script>
+
+    <!-- Google Translate Script Initialization -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'bn',
+                includedLanguages: 'bn,en,hi,ar,es,fr,de,ja',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
